@@ -1,3 +1,5 @@
+using DndApi.Installers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//adding installer classes for dependency injection
+builder.Services.AddServices();
+builder.Services.AddRepos();
+
 
 var app = builder.Build();
 
