@@ -1,14 +1,13 @@
-﻿using DndApi.Entitys.Interfaces;
-using DndApi.Enums;
+﻿using DndApi.Enums;
 
-namespace DndApi.Entitys
+namespace DndApi.Contracts.Models
 {
-    public class ArmorEntity : IEntity
+    public class ArmorModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ArmorType ArmorType { get; set; }
+        public ArmorType Type { get; set; }
         public int Armor { get; set; }
         public Rarity Rarity { get; set; }
     }

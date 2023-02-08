@@ -9,7 +9,8 @@ namespace DndApi.MappingProfiles
         public RequestToEntity()
         {
             CreateMap<PlayerRequest,PlayerEntity>();
-            CreateMap<SkillRequest,SkillEntity>();
+            CreateMap<SkillRequest, SkillEntity>();
+            CreateMap<ArmorRequest, ArmorEntity>();
         }
     }
 }

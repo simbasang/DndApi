@@ -5,15 +5,13 @@ using DndApi.Controllers.Generic;
 using DndApi.Entitys;
 using DndApi.Repos.EmptyRepos;
 using DndApi.Services.EmptyServices;
-using DndApi.Services.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DndApi.Controllers
 {
-   
-    public class SkillController : GenericController<SkillEntity,SkillRequest,SkillModel,SkillQuery,SkillService,SkillRepo>
+    public class ArmorController : GenericController<ArmorEntity, ArmorRequest, ArmorModel, ArmorQuery, ArmorService, ArmorRepo>
     {
-        public SkillController(SkillService service) : base(service)
+        public ArmorController(ArmorService service) : base(service)
         {
         }
     }

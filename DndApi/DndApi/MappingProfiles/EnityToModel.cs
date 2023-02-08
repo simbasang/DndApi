@@ -10,6 +10,7 @@ namespace DndApi.MappingProfiles
         {
             CreateMap<SkillEntity, SkillModel>();
             CreateMap<PlayerEntity, PlayerModel>();
+            CreateMap<ArmorEntity, ArmorModel>();
         }
     }
 }

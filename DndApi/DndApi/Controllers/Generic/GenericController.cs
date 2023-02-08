@@ -8,6 +8,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DndApi.Controllers.Generic
 {
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class GenericController<TEntity, TRequest, TModel, TQuery, TService, TRepo> : ControllerBase,
         IGenericController<TEntity, TRequest, TModel, TQuery, TService, TRepo>
