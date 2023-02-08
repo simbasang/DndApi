@@ -1,10 +1,14 @@
 ﻿namespace DndApi.Services.Generic
 {
-    public interface IGenericService<T, Trepo, Tentity, Trequest, Tmodel, Tquery> where T : class
+    public interface IGenericService<TEntity, TRequest, TModel, TQuery> 
+        where TEntity : class
+        where TRequest : class
+        where TModel : class
+        where TQuery : class
     {
-        Task<Tmodel> Create(Trequest request);
+        Task<TModel> Create(TRequest request);
         Task<bool> Delete(Guid id);
-        Task<IEnumerable<Tmodel>> Get(Tquery query);
-        Task<Tmodel> Update(Trequest request);
+        Task<IEnumerable<TModel>> Get(TQuery query);
+        Task<TModel> Update(TRequest request);
     }
 }

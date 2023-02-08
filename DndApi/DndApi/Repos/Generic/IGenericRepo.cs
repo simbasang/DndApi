@@ -2,11 +2,11 @@
 
 namespace DndApi.Repos.Generic
 {
-    public interface IGenericRepo<T, Tentity, Tquery> where T : class
+    public interface IGenericRepo<TEntity, TQuery> where TEntity : IEntity
     {
-        Task<Tentity> Create(Tentity entity);
+        Task<TEntity> Create(TEntity entity);
         Task<bool> Delete(Guid id);
-        Task<IEnumerable<Tentity>> Get(Tquery query);
-        Task<Tentity> Update(Tentity entity);
+        Task<IEnumerable<TEntity>> Get(TQuery query);
+        Task<TEntity> Update(TEntity entity);
     }
 }

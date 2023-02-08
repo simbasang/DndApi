@@ -8,25 +8,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DndApi.Repos.Generic
 {
-    public class GenericRepo<T, Tentity, Tquery> where T : class, IGenericRepo<T, Tentity, Tquery> where Tentity : class, IEntity
+    public abstract class GenericRepo<TEntity, TQuery>
+        : IGenericRepo<TEntity, TQuery> where TEntity : class, IEntity
     {
         private readonly Context _context;
-        private DbSet<Tentity> _table;
+        private DbSet<TEntity> _table;
+        protected IQueryable<TEntity> DbSetQueryable;
+
 
         public GenericRepo(Context context)
         {
             _context = context;
-            _table = _context.Set<Tentity>();
+            _table = _context.Set<TEntity>();
+            DbSetQueryable = _context.Set<TEntity>().AsQueryable();
         }
 
 
-        public async Task<IEnumerable<Tentity>> Get(Tquery query)
+        public async Task<IEnumerable<TEntity>> Get(TQuery query)
         {
-            return await _context.Set<Tentity>().Where(x => x.Id != new Guid()).ToListAsync();
+            return await AddFilters(DbSetQueryable, query).ToListAsync();
         }
 
 
-        public async Task<Tentity> Create(Tentity entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
             await _table.AddAsync(entity);
 
@@ -34,7 +38,7 @@ namespace DndApi.Repos.Generic
         }
 
 
-        public async Task<Tentity> Update(Tentity entity)
+        public async Task<TEntity> Update(TEntity entity)
         {
             var selectedEntity = _table.FirstOrDefault(x => x.Id == entity.Id);
 
@@ -42,7 +46,7 @@ namespace DndApi.Repos.Generic
                 return null;
 
             //update props
-            var properties = typeof(Tentity).GetProperties();
+            var properties = typeof(TEntity).GetProperties();
 
             foreach (var prop in properties)
             {
@@ -53,7 +57,7 @@ namespace DndApi.Repos.Generic
                 prop.SetValue(selectedEntity, value, null);
             }
 
-            _context.Set<Tentity>().Update(selectedEntity);
+            _context.Set<TEntity>().Update(selectedEntity);
 
             return await _context.SaveChangesAsync() > 0 ? entity : null;
 
@@ -71,6 +75,13 @@ namespace DndApi.Repos.Generic
 
             return await _context.SaveChangesAsync() > 0 ? true : false;
         }
+
+
+        /// <summary>
+        /// This method need to be overriden to filter the get method 
+        /// </summary>
+        protected abstract IQueryable<TEntity> AddFilters(IQueryable<TEntity> queryable,
+           TQuery query);
 
     }
 }

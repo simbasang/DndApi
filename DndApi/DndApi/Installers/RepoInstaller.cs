@@ -11,6 +11,7 @@ namespace DndApi.Installers
         {
             services.AddScoped<IPlayerRepo, PlayerRepo>();
             services.AddScoped<ISkillRepo, SkillRepo>();
+            services.AddScoped<SkillRepo>();
 
 
             return services;

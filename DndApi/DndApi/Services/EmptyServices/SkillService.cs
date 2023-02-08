@@ -10,9 +10,9 @@ using DndApi.Services.Interfaces;
 
 namespace DndApi.Services.EmptyServices
 {
-    public class SkillService : GenericService<SkillService, SkillRepo, SkillEntity, SkillRequest, SkillModel, SkillQuery>, ISkillService 
+    public class SkillService : GenericService<SkillRepo,SkillEntity,SkillRequest,SkillModel,SkillQuery>, ISkillService 
     {
-        public SkillService(IGenericRepo<SkillService, SkillEntity, SkillQuery> repository, IMapper mapper) : base(repository, mapper)
+        public SkillService(SkillRepo repository, IMapper mapper) : base(repository, mapper)
         {
         }
     }
