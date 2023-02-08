@@ -28,7 +28,10 @@ namespace DndApi.Repos.Generic
         {
             return await AddFilters(DbSetQueryable, query).ToListAsync();
         }
-
+        public async Task<TEntity> GetById(Guid id)
+        {
+            return await _table.FirstOrDefaultAsync(x => x.Id == id);
+        }
 
         public async Task<TEntity> Create(TEntity entity)
         {
@@ -40,24 +43,7 @@ namespace DndApi.Repos.Generic
 
         public async Task<TEntity> Update(TEntity entity)
         {
-            var selectedEntity = _table.FirstOrDefault(x => x.Id == entity.Id);
-
-            if (selectedEntity == null)
-                return null;
-
-            //update props
-            var properties = typeof(TEntity).GetProperties();
-
-            foreach (var prop in properties)
-            {
-                if (!prop.CanWrite)
-                    continue;
-
-                var value = prop.GetValue(entity, null);
-                prop.SetValue(selectedEntity, value, null);
-            }
-
-            _context.Set<TEntity>().Update(selectedEntity);
+            _context.Set<TEntity>().Update(entity);
 
             return await _context.SaveChangesAsync() > 0 ? entity : null;
 

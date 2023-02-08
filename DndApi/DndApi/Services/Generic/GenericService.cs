@@ -31,9 +31,32 @@ namespace DndApi.Services.Generic
         {
             return _mapper.Map<TModel>(await _repository.Create(_mapper.Map<TEntity>(request)));
         }
-        public async Task<TModel> Update(TRequest request)
+        public async Task<TModel> Update(Guid id, TRequest request)
         {
-            return _mapper.Map<TModel>(await _repository.Create(_mapper.Map<TEntity>(request)));
+            var oldEntity = await _repository.GetById(id);
+            if (oldEntity == null)
+                return null;
+
+            //update props
+            var properties = typeof(TEntity).GetProperties();
+            var reqProperties = typeof(TRequest).GetProperties();
+
+
+            foreach (var prop in properties)
+            {
+                if (!prop.CanWrite)
+                    continue;
+
+                var newValue = reqProperties.FirstOrDefault(x => x.Name == prop.Name)?.GetValue(request);
+               
+                if (newValue == null)
+                    continue;
+
+                prop.SetValue(oldEntity, newValue, null);
+            }
+
+            //Must send all the props or it will be 
+            return _mapper.Map<TModel>(await _repository.Update(oldEntity));
         }
         public async Task<bool> Delete(Guid id)
         {

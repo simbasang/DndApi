@@ -6,6 +6,7 @@ using DndApi.Entitys;
 using DndApi.Repos.EmptyRepos;
 using DndApi.Services.EmptyServices;
 using DndApi.Services.Generic;
+using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DndApi.Services.Interfaces
@@ -15,6 +16,6 @@ namespace DndApi.Services.Interfaces
         Task<SkillModel> Create(SkillRequest request);
         Task<bool> Delete(Guid id);
         Task<IEnumerable<SkillModel>> Get(SkillQuery query);
-        Task<SkillModel> Update(SkillRequest request);
+        Task<SkillModel> Update(Guid id,SkillRequest request);
     }
 }

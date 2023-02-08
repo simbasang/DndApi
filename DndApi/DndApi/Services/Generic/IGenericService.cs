@@ -9,6 +9,6 @@
         Task<TModel> Create(TRequest request);
         Task<bool> Delete(Guid id);
         Task<IEnumerable<TModel>> Get(TQuery query);
-        Task<TModel> Update(TRequest request);
+        Task<TModel> Update(Guid id,TRequest request);
     }
 }

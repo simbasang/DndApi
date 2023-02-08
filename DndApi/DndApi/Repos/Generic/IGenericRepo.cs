@@ -8,5 +8,6 @@ namespace DndApi.Repos.Generic
         Task<bool> Delete(Guid id);
         Task<IEnumerable<TEntity>> Get(TQuery query);
         Task<TEntity> Update(TEntity entity);
+        Task<TEntity> GetById(Guid id);
     }
 }

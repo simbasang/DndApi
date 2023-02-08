@@ -17,7 +17,7 @@ namespace DndApi.Controllers.Generic
         where TModel : class
         where TQuery : class
         where TService : GenericService<TRepo, TEntity, TRequest, TModel, TQuery>
-        where TRepo : GenericRepo<TEntity,TQuery>
+        where TRepo : GenericRepo<TEntity, TQuery>
     {
         private readonly TService _service;
 
@@ -40,9 +40,9 @@ namespace DndApi.Controllers.Generic
         }
 
         [HttpPut]
-        public async Task<ActionResult<TModel>> Update([FromBody] TRequest request)
+        public async Task<ActionResult<TModel>> Update([FromQuery] Guid id, [FromBody] TRequest request)
         {
-            return await _service.Update(request);
+            return await _service.Update(id,request);
         }
 
         [HttpDelete]

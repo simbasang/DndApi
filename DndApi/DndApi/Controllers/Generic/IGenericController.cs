@@ -17,6 +17,6 @@ namespace DndApi.Controllers.Generic
         Task<ActionResult<TModel>> Add([FromBody] TRequest request);
         Task<ActionResult<bool>> Delete([FromQuery] Guid id);
         Task<ActionResult<IEnumerable<TModel>>> Get([FromQuery] TQuery query);
-        Task<ActionResult<TModel>> Update([FromBody] TRequest request);
+        Task<ActionResult<TModel>> Update([FromQuery] Guid id, [FromBody] TRequest request);
     }
 }
