@@ -7,6 +7,7 @@ namespace DndApi.Contexts
     {
         public DbSet<SkillEntity> Skills { get; set; }
         public DbSet<ArmorEntity> Armors { get; set; }
+        public DbSet<WeaponEntity> Weapons { get; set; }
         public Context(DbContextOptions<Context> options ):base(options)
         {
 

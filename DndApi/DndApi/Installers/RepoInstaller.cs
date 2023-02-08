@@ -13,10 +13,13 @@ namespace DndApi.Installers
             services.AddScoped<IPlayerRepo, PlayerRepo>();
             services.AddScoped<ISkillRepo, SkillRepo>();
             services.AddScoped<IArmorRepo, ArmorRepo>();
+            services.AddScoped<IWeaponRepo, WeaponRepo>();
 
 
             services.AddScoped<ArmorRepo>();
             services.AddScoped<SkillRepo>();
+            services.AddScoped<WeaponRepo>();
+
 
             return services;
         }

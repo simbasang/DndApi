@@ -16,10 +16,12 @@ namespace DndApi.Installers
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<ISkillService, SkillService>();
             services.AddScoped<IArmorService,ArmorService>();
+            services.AddScoped<IWeaponService, WeaponService>();
 
 
             services.AddScoped<ArmorService>();
             services.AddScoped<SkillService>();
+            services.AddScoped<WeaponService>();
 
 
             return services;

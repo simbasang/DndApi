@@ -11,6 +11,7 @@ namespace DndApi.MappingProfiles
             CreateMap<PlayerRequest,PlayerEntity>();
             CreateMap<SkillRequest, SkillEntity>();
             CreateMap<ArmorRequest, ArmorEntity>();
+            CreateMap<WeaponRequest, WeaponEntity>();
         }
     }
 }
