@@ -1,4 +1,4 @@
-﻿namespace DndApi.Entitys
+﻿namespace DndApi.Entitys.Interfaces
 {
     public interface IAttributeEntity
     {

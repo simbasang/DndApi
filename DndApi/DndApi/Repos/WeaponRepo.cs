@@ -4,7 +4,7 @@ using DndApi.Entitys;
 using DndApi.Repos.Generic;
 using DndApi.Repos.Interfaces;
 
-namespace DndApi.Repos.EmptyRepos
+namespace DndApi.Repos
 {
     public class WeaponRepo : GenericRepo<WeaponEntity, WeaponQuery>, IWeaponRepo
     {

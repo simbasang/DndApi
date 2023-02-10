@@ -4,7 +4,7 @@ using DndApi.Entitys;
 using DndApi.Repos.Generic;
 using DndApi.Repos.Interfaces;
 
-namespace DndApi.Repos.EmptyRepos
+namespace DndApi.Repos
 {
     public class SkillRepo : GenericRepo<SkillEntity, SkillQuery>, ISkillRepo
     {
@@ -27,10 +27,18 @@ namespace DndApi.Repos.EmptyRepos
             if (query.AmountType != null)
                 queryable = queryable.Where(x => x.AmountType <= query.AmountType);
 
-            if (query.Type != null)
-                queryable = queryable.Where(x => x.Type <= query.Type);
+            if (query.SkillEfectType != null)
+                queryable = queryable.Where(x => x.SkillEfectType <= query.SkillEfectType);
 
-           
+            if (query.SkillType != null)
+                queryable = queryable.Where(x => x.SkillType <= query.SkillType);
+
+            if (query.ClassId != null)
+                queryable = queryable.Where(x => x.ClassId == query.ClassId);
+
+            if (query.RaceId != null)
+                queryable = queryable.Where(x => x.RaceId == query.RaceId);
+
             return queryable;
         }
     }

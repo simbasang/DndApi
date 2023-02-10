@@ -1,9 +1,5 @@
 ﻿using DndApi.Contracts.Querys;
 using DndApi.Entitys;
-using DndApi.Entitys.Interfaces;
-using DndApi.Repos.EmptyRepos;
-using DndApi.Repos.Generic;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DndApi.Repos.Interfaces
 {

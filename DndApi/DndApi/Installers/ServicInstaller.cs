@@ -1,6 +1,5 @@
 ﻿using Azure.Core;
 using DndApi.Entitys.Interfaces;
-using DndApi.Services;
 using DndApi.Services.EmptyServices;
 using DndApi.Services.Generic;
 using DndApi.Services.Interfaces;
@@ -17,11 +16,14 @@ namespace DndApi.Installers
             services.AddScoped<ISkillService, SkillService>();
             services.AddScoped<IArmorService,ArmorService>();
             services.AddScoped<IWeaponService, WeaponService>();
+            services.AddScoped<IClassService, ClassService>();
 
 
+            services.AddScoped<PlayerService>();
             services.AddScoped<ArmorService>();
             services.AddScoped<SkillService>();
             services.AddScoped<WeaponService>();
+            services.AddScoped<ClassService>();
 
 
             return services;

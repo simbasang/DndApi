@@ -3,7 +3,7 @@ using DndApi.Contracts.Models;
 using DndApi.Contracts.Querys;
 using DndApi.Contracts.Request;
 using DndApi.Entitys;
-using DndApi.Repos.EmptyRepos;
+using DndApi.Repos;
 using DndApi.Repos.Generic;
 using DndApi.Services.Generic;
 using DndApi.Services.Interfaces;

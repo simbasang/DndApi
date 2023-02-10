@@ -1,8 +1,5 @@
 ﻿using DndApi.Repos;
-using DndApi.Repos.EmptyRepos;
 using DndApi.Repos.Interfaces;
-using DndApi.Services.EmptyServices;
-using DndApi.Services.Interfaces;
 
 namespace DndApi.Installers
 {
@@ -14,11 +11,14 @@ namespace DndApi.Installers
             services.AddScoped<ISkillRepo, SkillRepo>();
             services.AddScoped<IArmorRepo, ArmorRepo>();
             services.AddScoped<IWeaponRepo, WeaponRepo>();
+            services.AddScoped<IClassRepo, ClassRepo>();
 
 
+            services.AddScoped<PlayerRepo>();
             services.AddScoped<ArmorRepo>();
             services.AddScoped<SkillRepo>();
             services.AddScoped<WeaponRepo>();
+            services.AddScoped<ClassRepo>();
 
 
             return services;

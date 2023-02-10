@@ -2,9 +2,8 @@
 {
     public enum SkillType
     {
-        Passive,
-        Attack,
-        Heal,
-        Defence
+        Class,
+        Race,
+        Normal,
     }
 }

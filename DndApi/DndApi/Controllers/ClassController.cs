@@ -8,11 +8,10 @@ using DndApi.Services.EmptyServices;
 
 namespace DndApi.Controllers
 {
-    public class WeaponController : GenericController<WeaponEntity, WeaponRequest, WeaponModel, WeaponQuery, WeaponService, WeaponRepo>
+    public class ClassController : GenericController<ClassEntity, ClassRequest, ClassModel, ClassQuery, ClassService, ClassRepo>
     {
-        public WeaponController(WeaponService service) : base(service)
+        public ClassController(ClassService service) : base(service)
         {
-
         }
     }
 }

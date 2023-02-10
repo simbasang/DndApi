@@ -7,9 +7,9 @@ namespace DndApi.Repos.Interfaces
 {
     public interface IPlayerRepo
     {
-        Task<PlayerModel> CreatePlayer(PlayerEntity request);
-        Task<PlayerModel> DeletePlayer(Guid id);
-        Task<PlayerModel> GetPlayers(PlayerQuery query);
-        Task<PlayerModel> UpdatePlayer(PlayerEntity request);
+        Task<PlayerEntity> Create(PlayerEntity entity);
+        Task<bool> Delete(Guid id);
+        Task<IEnumerable<PlayerEntity>> Get(PlayerQuery query);
+        Task<PlayerEntity> Update(PlayerEntity entity);
     }
 }

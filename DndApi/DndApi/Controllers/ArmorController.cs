@@ -3,7 +3,7 @@ using DndApi.Contracts.Querys;
 using DndApi.Contracts.Request;
 using DndApi.Controllers.Generic;
 using DndApi.Entitys;
-using DndApi.Repos.EmptyRepos;
+using DndApi.Repos;
 using DndApi.Services.EmptyServices;
 using Microsoft.AspNetCore.Mvc;
 

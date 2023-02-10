@@ -1,28 +1,24 @@
-﻿using DndApi.Contracts.Models;
+﻿using DndApi.Contexts;
+using DndApi.Contracts.Models;
 using DndApi.Contracts.Querys;
 using DndApi.Contracts.Request;
 using DndApi.Entitys;
+using DndApi.Repos.Generic;
 using DndApi.Repos.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace DndApi.Repos
 {
-    public class PlayerRepo : IPlayerRepo
+    public class PlayerRepo : GenericRepo<PlayerEntity, PlayerQuery>, IPlayerRepo
     {
-        public async Task<PlayerModel> GetPlayers(PlayerQuery query)
+        public PlayerRepo(Context context) : base(context)
         {
-            return null;
         }
-        public async Task<PlayerModel> CreatePlayer(PlayerEntity request)
+
+        protected override IQueryable<PlayerEntity> AddFilters(IQueryable<PlayerEntity> queryable, PlayerQuery query)
         {
-            return null;
-        }
-        public async Task<PlayerModel> UpdatePlayer(PlayerEntity request)
-        {
-            return null;
-        }
-        public async Task<PlayerModel> DeletePlayer(Guid id)
-        {
-            return null;
+            queryable = queryable.Include(x => x.Class);
+            return queryable;
         }
     }
 }

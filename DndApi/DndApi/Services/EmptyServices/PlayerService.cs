@@ -9,9 +9,9 @@ using DndApi.Services.Interfaces;
 
 namespace DndApi.Services.EmptyServices
 {
-    public class WeaponService : GenericService<WeaponRepo, WeaponEntity, WeaponRequest, WeaponModel, WeaponQuery>, IWeaponService
+    public class PlayerService : GenericService<PlayerRepo, PlayerEntity, PlayerRequest, PlayerModel, PlayerQuery>, IPlayerService
     {
-        public WeaponService(WeaponRepo repository, IMapper mapper) : base(repository, mapper)
+        public PlayerService(PlayerRepo repository, IMapper mapper) : base(repository, mapper)
         {
         }
     }
